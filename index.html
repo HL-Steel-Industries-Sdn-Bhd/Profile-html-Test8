@@ -56,8 +56,7 @@
                 grid-column: 1 / span 2;
                 margin: 15px 0;
             }
-            
-            /* --- 修改点 1: 左右排列 Total / Remaining --- */
+
             .points-container {
                 grid-column: 1 / span 2;
                 display: flex;
@@ -78,10 +77,7 @@
             }
         }
 
-        /* ----------------------------- */
-        /* FIXED LANDSCAPE LAYOUT BELOW */
-        /* ----------------------------- */
-
+        /* Landscape Layout */
         @media (orientation: landscape) {
             .grid {
                 display: grid;
@@ -92,7 +88,6 @@
                 padding: 20px;
             }
 
-            /* B: Profile Picture */
             .profile-container {
                 grid-column: 1 / span 3;
                 grid-row: 1;
@@ -102,7 +97,6 @@
                 justify-content: center;
             }
 
-            /* C: Employee Info */
             .info-container {
                 grid-column: 4 / span 4;
                 grid-row: 1;
@@ -112,7 +106,6 @@
                 padding-left: 20px;
             }
 
-            /* A: LOGO — centered */
             .logo-container {
                 grid-column: 8 / span 2;
                 grid-row: 1;
@@ -121,7 +114,6 @@
                 justify-content: center;
             }
 
-            /* E + F: Total & Remaining Points (right aligned) */
             .points-container {
                 grid-column: 11 / span 6;
                 grid-row: 1;
@@ -135,14 +127,12 @@
                 width: 100%;
             }
 
-            /* Marquee */
             .marquee-container {
                 grid-column: 1 / span 16;
                 grid-row: 2;
                 margin: 10px 0;
             }
 
-            /* Buttons (prize area fully shown) */
             .buttons-container {
                 grid-column: 1 / span 16;
                 grid-row: 3 / span 8;
@@ -153,7 +143,6 @@
             }
         }
 
-        /* Common Styles */
         .card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
@@ -161,12 +150,6 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .logo {
-            max-width: 120px;
-            height: auto;
-            border-radius: 10px;
         }
 
         .profile-pic {
@@ -229,11 +212,6 @@
             color: #e74c3c;
         }
 
-        /* --- 修改点 2: Total / Point 拆成两行 --- */
-        .point-label div {
-            line-height: 1.2em;
-        }
-
         .button {
             background: linear-gradient(135deg, #3498db, #2980b9);
             color: white;
@@ -256,14 +234,6 @@
             box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
         }
 
-        .button:active {
-            transform: translateY(-1px);
-        }
-
-        .hidden-form {
-            display: none;
-        }
-
         .loading {
             position: fixed;
             top: 0;
@@ -278,79 +248,64 @@
             font-size: 1.5em;
             color: #333;
         }
-
-        @media (max-width: 768px) {
-            .name { font-size: 2em; }
-            .point-value { font-size: 2em; }
-            .button { padding: 15px; font-size: 1em; }
-        }
-
-        @media (max-width: 480px) {
-            .name { font-size: 1.8em; }
-            .profile-pic { width: 100px; height: 100px; }
-            .button { padding: 12px; font-size: 0.9em; }
-        }
     </style>
 </head>
 
 <body>
-    <!-- Loading Spinner -->
     <div id="loading" class="loading">Loading...</div>
 
-    <!-- Hidden form to pass employee data -->
-    <form id="employeeForm" class="hidden-form" action="https://hl-steel-industries-sdn-bhd.github.io/Redeem-html-test8/" method="GET">
-        <input type="hidden" name="employee" id="employeeName">
-    </form>
-
     <div class="container">
-
         <div class="grid">
 
-            <!-- A: HL Logo -->
+            <!-- Logo -->
             <div class="logo-container card">
-                <img src="" alt="HL Logo" class="logo">
+                <img src="" class="logo">
             </div>
 
-            <!-- B: Profile Picture -->
+            <!-- Profile -->
             <div class="profile-container card">
-                <img src="" alt="Profile Picture" class="profile-pic">
+                <img src="" class="profile-pic">
             </div>
 
-            <!-- C: Employee Info -->
+            <!-- Info -->
             <div class="info-container card">
-                <div class="name" id="employeeNameDisplay">Loading...</div>
+                <div class="name" id="employeeNameDisplay">Albert</div>
                 <div class="department">Department: Production</div>
                 <div class="position">Position: Assistant Supervisor</div>
             </div>
 
-            <!-- D: Marquee Announcement -->
+            <!-- Marquee -->
             <div class="marquee-container">
                 <div class="marquee card">
                     <div class="marquee-content">
-                        🎉 Announcement: Monthly Point System Update - New rewards added! Check out the Redeem section for exciting prizes! 🎁
+                        🎉 Announcement: Monthly Point System Update - New rewards added!
                     </div>
                 </div>
             </div>
 
-            <!-- E + F Group Wrapper -->
+            <!-- Total & Remaining -->
             <div class="points-container">
-                <!-- E: Total Point -->
                 <div class="point-card card total-point point-box">
                     <div class="point-label"><div>Total</div><div>Point</div></div>
                     <div class="point-value" id="totalPoint">0</div>
                 </div>
 
-                <!-- F: Remaining Point -->
                 <div class="point-card card remaining-point point-box">
                     <div class="point-label"><div>Remaining</div><div>Point</div></div>
                     <div class="point-value" id="remainingPoint">0</div>
                 </div>
             </div>
 
-            <!-- Buttons Section -->
+            <!-- Buttons -->
             <div class="buttons-container">
                 <button class="button" onclick="viewRanking()">View Ranking</button>
-                <button class="button" onclick="goToRedeem()">Redeem Reward</button>
+
+                <!-- Redeem Reward 加上 user=Albert -->
+                <button class="button"
+                    onclick="window.location.href='https://hl-steel-industries-sdn-bhd.github.io/Redeem-html-test6/?user=Albert'">
+                    Redeem Reward
+                </button>
+
                 <button class="button" onclick="window.open('https://hl-steel-industries-sdn-bhd.github.io/Off-Site-Work-Record/', '_blank')">Off-site Work Record</button>
                 <button class="button" onclick="submitContribution()">Submit Contribution</button>
                 <button class="button" onclick="viewSchedule()">Work Schedule</button>
@@ -363,85 +318,49 @@
     </div>
 
     <script>
-        // 配置 - 请替换为您自己的GAS Web App URL
-        const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyKorxyRxOdXb555PsnaCNzO8qgfMHJv2aXhXqqKxJAC3gO3xz3GgkaMJiieyOj61_1Cw/exec'; // 部署GAS后获取的URL
-        
-        // 从URL参数获取员工姓名（例如：profile.html?employee=Albert）
-        const urlParams = new URLSearchParams(window.location.search);
-        let employeeName = urlParams.get('employee') || 'Albert'; // 默认为Albert，但应该从URL获取
-        
-        // 更新CONFIG
         const CONFIG = {
-            employeeName: employeeName,
-            department: 'Production',
-            position: 'Assistant Supervisor',
-            profilePicture: ''
+            employeeName: "Albert",
+            sheetID: "1nnjHKRP5mfutcX0DCnGBzFQOw78dX5MbkknZio_hRQc",
+            tabName: "Remaining Point",
+            gasURL: "https://script.google.com/macros/s/AKfycbxIkDg6Kibqe_oE2yoTUtj0iljvvB4xRTu6yTZSZ_m97tSKmSQHpfjdfNs-wXVQZJZzUQ/exec"  // <<--- 你部署 GAS 后记得填这里
         };
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // 显示员工姓名
-            document.getElementById('employeeNameDisplay').textContent = CONFIG.employeeName;
-            document.querySelector('.department').textContent = 'Department: ' + CONFIG.department;
-            document.querySelector('.position').textContent = 'Position: ' + CONFIG.position;
-            document.querySelector('.profile-pic').src = CONFIG.profilePicture;
-            
-            // 设置隐藏表单的值为员工姓名
-            document.getElementById('employeeName').value = CONFIG.employeeName;
-            
-            // 从GAS获取积分数据
-            fetchEmployeePoints();
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("employeeNameDisplay").textContent = CONFIG.employeeName;
+
+            loadPointsFromGAS();
+
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+            }, 800);
         });
 
-        // 从GAS获取员工积分
-        function fetchEmployeePoints() {
-            if (!GAS_WEB_APP_URL || GAS_WEB_APP_URL === 'https://script.google.com/macros/s/AKfycbyKorxyRxOdXb555PsnaCNzO8qgfMHJv2aXhXqqKxJAC3gO3xz3GgkaMJiieyOj61_1Cw/exec') {
-                console.error('请先设置GAS Web App URL');
-                document.getElementById('loading').style.display = 'none';
-                return;
+        async function loadPointsFromGAS() {
+            try {
+
+                const url =
+                    `${CONFIG.gasURL}?name=${encodeURIComponent(CONFIG.employeeName)}`
+                    + `&sheet=${CONFIG.sheetID}`
+                    + `&tab=${encodeURIComponent(CONFIG.tabName)}`;
+
+                const response = await fetch(url);
+                const data = await response.json();
+
+                document.getElementById("totalPoint").textContent = data.totalPoint.toLocaleString();
+                document.getElementById("remainingPoint").textContent = data.remainingPoint.toLocaleString();
+
+            } catch (err) {
+                console.error(err);
+                alert("⚠️ Failed to load points from server.");
             }
-            
-            const url = `${GAS_WEB_APP_URL}?action=getEmployeePoints&name=${encodeURIComponent(CONFIG.employeeName)}`;
-            
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // 更新积分显示
-                        document.getElementById('totalPoint').textContent = data.totalPoint.toLocaleString();
-                        document.getElementById('remainingPoint').textContent = data.remainingPoint.toLocaleString();
-                    } else {
-                        console.error('获取积分失败:', data.message);
-                    }
-                    
-                    // 隐藏加载动画
-                    setTimeout(() => {
-                        document.getElementById('loading').style.display = 'none';
-                    }, 500);
-                })
-                .catch(error => {
-                    console.error('获取积分时出错:', error);
-                    document.getElementById('loading').style.display = 'none';
-                });
         }
 
-        // 前往兑换页面
-        function goToRedeem() {
-            // 提交表单，传递员工姓名到兑换页面
-            document.getElementById('employeeForm').submit();
-        }
-
-        function viewRanking() { alert('View Ranking feature coming soon!'); }
-        function submitContribution() { alert('Submit Contribution feature coming soon!'); }
-        function viewSchedule() { alert('Work Schedule feature coming soon!'); }
-        function submitQC() { alert('Submit QC Report feature coming soon!'); }
-        function viewBounty() { alert('Bounty Task feature coming soon!'); }
-        function editProfile() { alert('Edit Profile feature coming soon!'); }
-
-        window.addEventListener('orientationchange', function() {
-            document.body.style.display = 'none';
-            document.body.offsetHeight;
-            document.body.style.display = 'block';
-        });
+        function viewRanking() { alert("Coming soon"); }
+        function submitContribution() { alert("Coming soon"); }
+        function viewSchedule() { alert("Coming soon"); }
+        function submitQC() { alert("Coming soon"); }
+        function viewBounty() { alert("Coming soon"); }
+        function editProfile() { alert("Coming soon"); }
     </script>
 </body>
 </html>
