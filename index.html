@@ -364,7 +364,7 @@
 
     <script>
         // 配置 - 请替换为您自己的GAS Web App URL
-        const GAS_WEB_APP_URL = 'YOUR_GAS_WEB_APP_URL_HERE'; // 部署GAS后获取的URL
+        const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyKorxyRxOdXb555PsnaCNzO8qgfMHJv2aXhXqqKxJAC3gO3xz3GgkaMJiieyOj61_1Cw/exec'; // 部署GAS后获取的URL
         
         // 从URL参数获取员工姓名（例如：profile.html?employee=Albert）
         const urlParams = new URLSearchParams(window.location.search);
@@ -394,7 +394,7 @@
 
         // 从GAS获取员工积分
         function fetchEmployeePoints() {
-            if (!GAS_WEB_APP_URL || GAS_WEB_APP_URL === 'YOUR_GAS_WEB_APP_URL_HERE') {
+            if (!GAS_WEB_APP_URL || GAS_WEB_APP_URL === 'https://script.google.com/macros/s/AKfycbyKorxyRxOdXb555PsnaCNzO8qgfMHJv2aXhXqqKxJAC3gO3xz3GgkaMJiieyOj61_1Cw/exec') {
                 console.error('请先设置GAS Web App URL');
                 document.getElementById('loading').style.display = 'none';
                 return;
